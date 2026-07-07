@@ -1,36 +1,52 @@
-<input
-  id="search"
-  type="text"
-  placeholder="Land suchen..."
-  style="width:100%;padding:8px;margin-bottom:10px;">
-<!DOCTYPE html><html lang='de'><head><meta charset='UTF-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Interpol Map</title><link rel='stylesheet' href='https://unpkg.com/leaflet/dist/leaflet.css'><link rel='stylesheet' href='style.css'></head><body><div class='container'><div id='map'></div>
-<div id="sidebar">
+<!DOCTYPE html>
+<html lang='de'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>Interpol Map</title>
+  <link rel='stylesheet' href='https://unpkg.com/leaflet/dist/leaflet.css'>
+  <link rel='stylesheet' href='style.css'>
+</head>
+<body>
 
-    <h2>Interpol Survey</h2>
-
-    <input
-        id="search"
-        type="text"
-        placeholder="Land suchen..."
-        style="width:100%;padding:8px;margin-bottom:10px;">
-
-    <div style="margin-bottom:15px;">
-        <label>
-            <input type="checkbox" id="filterYes">
-
-  </div></div><script src='https://unpkg.com/leaflet/dist/leaflet.js'></script><script src='app.js'></script></body></html>
 <header class="header">
-
-  <div class="logo-container">
-
-    logo.png         alt="ECBA Logo"
-         class="logo">
-
-    <div>
+  <div class="header-content">
+    <div class="logo-container">
+      <img src="logo.png" alt="ECBA Logo" class="logo">
+    </div>
+    <div class="header-text">
       <h1>ECBA INTERPOL Country Guide</h1>
       <p>European Criminal Bar Association</p>
     </div>
-
   </div>
-
 </header>
+
+<div class="container">
+  <div id="map"></div>
+  
+  <div id="sidebar">
+    <h2>Interpol Survey</h2>
+    
+    <input
+      id="search"
+      type="text"
+      placeholder="Land suchen..."
+      style="width:100%;padding:8px;margin-bottom:10px;">
+    
+    <div style="margin-bottom:15px;">
+      <label>
+        <input type="checkbox" id="filterYes">
+        Red Notice Countries
+      </label>
+    </div>
+    
+    <div id="info">
+      <p>Wählen Sie ein Land aus oder suchen Sie danach.</p>
+    </div>
+  </div>
+</div>
+
+<script src='https://unpkg.com/leaflet/dist/leaflet.js'></script>
+<script src='app.js'></script>
+</body>
+</html>
