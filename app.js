@@ -8,4 +8,4 @@ L.tileLayer(
 ).addTo(map);
 
 document.getElementById('info').innerHTML =
-  '<h3>Test erfolgreich</h3><p>JavaScript funktioniert.</p>';
+  '<h3>✅ JavaScript funktioniert</h3><p>Die Verbindung zwischen HTML und app.js ist erfolgreich.</p>';
