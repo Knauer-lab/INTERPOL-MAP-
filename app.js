@@ -1,4 +1,6 @@
-const map = L.map('map').setView([20,0],2);
+layer.on("click", function() {
+    console.log(feature.properties);
+});
 
 L.tileLayer(
   'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
