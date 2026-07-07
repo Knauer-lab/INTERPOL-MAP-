@@ -1,11 +1,17 @@
 {
   "Germany": {
     "ncb": "Bundeskriminalamt - NCB Wiesbaden",
+    "address": "65173 Wiesbaden",
     "redNotice": "Yes",
+    "redNoticeLaw": "Section 19 Act on International Mutual Assistance in Criminal Matters",
     "diffusion": "Yes",
+    "diffusionLaw": "Section 19 Act on International Mutual Assistance in Criminal Matters",
     "system": "Own local system",
-    "warning": "Yes"
-  },
+    "canExclude": "Yes",
+    "requestInfo": "Yes",
+    "warnWantedPerson": "Yes"
+  }
+},
   "France": {
     "ncb": "NCB Paris",
     "redNotice": "Yes",
