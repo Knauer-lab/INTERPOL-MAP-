@@ -31,32 +31,39 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
+    justify-content: flex-start;
+    gap: 30px;
 }
 
 .logo-container {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .logo {
-    height: 80px;
+    height: 100px;
     width: auto;
     background: white;
-    padding: 5px;
+    padding: 8px;
     border-radius: 4px;
     display: block;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .header-text h1 {
     font-size: 28px;
     font-weight: 600;
     margin-bottom: 5px;
+    margin: 0;
 }
 
 .header-text p {
@@ -69,7 +76,7 @@ body {
 /* Main Container */
 .container {
     display: flex;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 140px);
     gap: 0;
 }
 
@@ -207,13 +214,14 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        height: auto;
+    .header {
+        padding: 15px;
     }
 
     .header-content {
         flex-direction: column;
+        justify-content: center;
+        gap: 15px;
     }
 
     .logo-container {
@@ -221,7 +229,11 @@ body {
     }
 
     .logo {
-        height: 60px;
+        height: 80px;
+    }
+
+    .header-text {
+        text-align: center;
     }
 
     .header-text h1 {
@@ -230,6 +242,11 @@ body {
 
     .header-text p {
         font-size: 12px;
+    }
+
+    .container {
+        flex-direction: column;
+        height: auto;
     }
 
     #map {
@@ -253,11 +270,11 @@ body {
 
 @media (max-width: 480px) {
     .header {
-        padding: 15px;
+        padding: 12px;
     }
 
     .logo {
-        height: 50px;
+        height: 60px;
     }
 
     .header-text h1 {
