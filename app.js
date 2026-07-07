@@ -37,12 +37,39 @@ Promise.all([
           return;
         }
 
-        document.getElementById('info').innerHTML = `
-          <h3>${country}</h3>
-          <p><b>NCB:</b> ${info.ncb}</p>
-          <p><b>Red Notice:</b> ${info.redNotice}</p>
-          <p><b>Diffusion:</b> ${info.diffusion}</p>
-        `;
+document.getElementById('info').innerHTML = `
+<h2>${country}</h2>
+
+<p><strong>NCB:</strong><br>
+${info.ncb || "-"}</p>
+
+<p><strong>Address:</strong><br>
+${info.address || "-"}</p>
+
+<p><strong>Red Notice Arrest:</strong><br>
+${info.redNotice || "-"}</p>
+
+<p><strong>Red Notice Legal Basis:</strong><br>
+${info.redNoticeLaw || "-"}</p>
+
+<p><strong>Diffusion Arrest:</strong><br>
+${info.diffusion || "-"}</p>
+
+<p><strong>Diffusion Legal Basis:</strong><br>
+${info.diffusionLaw || "-"}</p>
+
+<p><strong>System:</strong><br>
+${info.system || "-"}</p>
+
+<p><strong>NCB can exclude notices:</strong><br>
+${info.canExclude || "-"}</p>
+
+<p><strong>Access request possible:</strong><br>
+${info.requestInfo || "-"}</p>
+
+<p><strong>Warning possible:</strong><br>
+${info.warnWantedPerson || "-"}</p>
+`;
       });
 
     }
