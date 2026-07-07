@@ -30,3 +30,29 @@ body{
 h2{
     color:#14213d;
 }
+.header{
+    background:#14213d;
+    color:white;
+    padding:20px;
+}
+
+.logo-container{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.logo{
+    height:70px;
+    width:auto;
+}
+
+.header h1{
+    margin:0;
+    font-size:30px;
+}
+
+.header p{
+    margin-top:5px;
+    color:#d4af37;
+}
