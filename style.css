@@ -27,12 +27,21 @@ body {
     z-index: 100;
 }
 
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+}
+
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+    justify-content: center;
 }
 
 .logo {
@@ -44,15 +53,24 @@ body {
     display: block;
 }
 
-.header h1 {
-    font-size: 24px;
+.header-text h1 {
+    font-size: 28px;
     font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.header-text p {
+    font-size: 14px;
+    font-weight: 300;
+    opacity: 0.9;
+    margin: 0;
 }
 
 /* Main Container */
 .container {
     display: flex;
-    height: calc(100vh - 120px);
+    height: calc(100vh - 160px);
+    gap: 0;
 }
 
 #map {
@@ -78,34 +96,95 @@ body {
 
 #sidebar h2 {
     font-size: 18px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: #14213d;
+    border-bottom: 2px solid #14213d;
+    padding-bottom: 10px;
 }
 
-#sidebar ul {
-    list-style: none;
-}
-
-#sidebar li {
+#sidebar input[type="text"] {
+    width: 100%;
     padding: 10px;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+#sidebar input[type="text"]:focus {
+    outline: none;
+    border-color: #14213d;
+    box-shadow: 0 0 5px rgba(20, 33, 61, 0.2);
+}
+
+/* Info Panel */
+#info {
+    background: white;
+    padding: 15px;
+    border-radius: 4px;
+    border-left: 4px solid #14213d;
+    margin-top: 15px;
+}
+
+#info h2 {
+    font-size: 20px;
+    color: #14213d;
+    margin-bottom: 15px;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+#info h3 {
+    font-size: 16px;
+    color: #14213d;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+#info p {
+    margin: 10px 0;
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+}
+
+#info p strong {
+    color: #14213d;
+    font-weight: 600;
+}
+
+#info p:first-child {
+    margin-top: 0;
+}
+
+#info p:last-child {
+    margin-bottom: 0;
+}
+
+/* Checkbox Styling */
+#sidebar label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
     background: white;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
-    border-left: 3px solid transparent;
+    transition: background 0.2s ease;
+    margin-bottom: 15px;
 }
 
-#sidebar li:hover {
+#sidebar label:hover {
     background: #e8eef7;
-    border-left-color: #14213d;
-    transform: translateX(4px);
 }
 
-#sidebar li.active {
-    background: #14213d;
-    color: white;
-    border-left-color: #fff;
+#sidebar input[type="checkbox"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    accent-color: #14213d;
 }
 
 /* Scrollbar Styling */
@@ -133,6 +212,26 @@ body {
         height: auto;
     }
 
+    .header-content {
+        flex-direction: column;
+    }
+
+    .logo-container {
+        justify-content: center;
+    }
+
+    .logo {
+        height: 60px;
+    }
+
+    .header-text h1 {
+        font-size: 20px;
+    }
+
+    .header-text p {
+        font-size: 12px;
+    }
+
     #map {
         flex: 1;
         height: 400px;
@@ -144,19 +243,11 @@ body {
         flex: 0;
         max-height: 300px;
         border-left: none;
+        padding: 15px;
     }
 
-    .logo-container {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .logo {
-        height: 60px;
-    }
-
-    .header h1 {
-        font-size: 18px;
+    #sidebar h2 {
+        font-size: 16px;
     }
 }
 
@@ -169,17 +260,37 @@ body {
         height: 50px;
     }
 
+    .header-text h1 {
+        font-size: 16px;
+    }
+
+    .header-text p {
+        font-size: 11px;
+    }
+
     #map {
         height: 300px;
     }
 
     #sidebar {
-        padding: 15px;
+        padding: 12px;
     }
 
-    #sidebar li {
-        padding: 8px;
+    #sidebar h2 {
         font-size: 14px;
+        margin-bottom: 10px;
+    }
+
+    #info {
+        padding: 10px;
+    }
+
+    #info h2 {
+        font-size: 16px;
+    }
+
+    #info p {
+        font-size: 12px;
     }
 }
 
