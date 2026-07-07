@@ -60,7 +60,21 @@ const COUNTRY_NAME_MAP = {
   "Lithuania": "Lithuania",
   "Croatia": "Croatia",
   "Romania": "Romania",
-  "Serbia": "Serbia"
+  "Serbia": "Serbia",
+
+  "Albania": "Albania",
+  "Armenia": "Armenia",
+
+  "Czechia": "Czech Republic",
+  "Czech Republic": "Czech Republic",
+
+  "Slovakia": "Slovakia",
+
+  "Turkey": "Turkey",
+  "Türkiye": "Turkey",
+
+  "United States": "United States of America",
+  "United States of America": "United States of America"
 };
 
 // ============================================================================
