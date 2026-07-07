@@ -130,12 +130,13 @@ body {
 }
 
 /* Field Guide */
+
 .field-guide {
     background: white;
     padding: 15px;
     border-radius: 4px;
-    border-left: 4px solid #14213d;
-    margin-bottom: 15px;
+    border-left: 4px solid #d4af37;
+    margin-top: 20px;
     font-size: 12px;
 }
 
