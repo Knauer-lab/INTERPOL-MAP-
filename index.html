@@ -27,67 +27,48 @@
   <div id="sidebar">
     <h2>Interpol Survey</h2>
     
-    <input
-      id="search"
-      type="text"
-      placeholder="Land suchen..."
-      style="width:100%;padding:8px;margin-bottom:10px;">
-    
-    <div style="margin-bottom:15px;">
-      <label>
-        <input type="checkbox" id="filterYes">
-        Red Notice Countries
-      </label>
-    </div>
+   <input
+  id="search"
+  type="text"
+  placeholder="Land suchen..."
+  style="width:100%;padding:8px;margin-bottom:10px;">
 
-    <div id="field-guide" class="field-guide">
-      <h3>Survey Field Guide</h3>
-      
-      <div class="field-explanation">
-        <strong class="field-name">Country</strong>
-        <p class="field-desc">The INTERPOL Member State being surveyed</p>
-      </div>
+<div style="margin-bottom:15px;">
+  <label>
+    <input type="checkbox" id="filterYes">
+    Red Notice Countries
+  </label>
+</div>
 
-      <div class="field-explanation">
-        <strong class="field-name">NCB Name</strong>
-        <p class="field-desc">National Central Bureau - INTERPOL's contact point in each country (e.g., NCB Wiesbaden)</p>
-      </div>
+<div id="info">
+  <p>Wählen Sie ein Land aus oder suchen Sie danach.</p>
+</div>
 
-      <div class="field-explanation">
-        <strong class="field-name">NCB Address</strong>
-        <p class="field-desc">Contact information including postal address, email, and telephone number for the local NCB</p>
-      </div>
+<div id="field-guide" class="field-guide">
+  <h3>Survey Field Guide</h3>
 
-      <div class="field-explanation">
-        <strong class="field-name">Red Notice Arrest</strong>
-        <p class="field-desc">Whether arrests can be made solely on the basis of a Red Notice. Some countries require additional legal proceedings; others (e.g., Germany) will arrest immediately</p>
-      </div>
-
-      <div class="field-explanation">
-        <strong class="field-name">Diffusion Arrest</strong>
-        <p class="field-desc">Similar to Red Notices - whether arrests can be made on Diffusion notices alone</p>
-      </div>
-
-      <div class="field-explanation">
-        <strong class="field-name">Legal Basis</strong>
-        <p class="field-desc">The applicable laws and regulations that authorize arrests based on INTERPOL notices in your country</p>
-      </div>
-
-      <div class="field-explanation">
-        <strong class="field-name">System Used</strong>
-        <p class="field-desc">Whether your country uses INTERPOL's I24/7 system, own local systems, or both</p>
-      </div>
-
-      <div class="field-explanation warning">
-        <strong class="field-name">⚠️ Additional Capabilities</strong>
-        <p class="field-desc"><strong>Notice Exclusion:</strong> Can your NCB exclude notices from national systems on a prima facie basis?<br><br><strong>Access Requests:</strong> Can your national law allow requesting information about the existence of notices in INTERPOL systems?<br><br><strong>Warning Obligation:</strong> In some countries, police must inform a wanted person if they obtain knowledge of an abusive Red Notice that could expose someone to arrest, torture, or ill-treatment upon leaving the country</p>
-      </div>
-    </div>
-    
-    <div id="info">
-      <p>Wählen Sie ein Land aus oder suchen Sie danach.</p>
-    </div>
+  <div class="field-explanation">
+    <strong class="field-name">Country</strong>
+    <p class="field-desc">
+      The INTERPOL Member State being surveyed
+    </p>
   </div>
+
+  <div class="field-explanation">
+    <strong class="field-name">NCB Name</strong>
+    <p class="field-desc">
+      National Central Bureau - INTERPOL's contact point in each country
+    </p>
+  </div>
+
+  <div class="field-explanation">
+    <strong class="field-name">Red Notice Arrest</strong>
+    <p class="field-desc">
+      Whether arrests can be made solely on the basis of a Red Notice.
+    </p>
+  </div>
+
+  <!-- Restliche Erklärungen -->
 </div>
 
 <script src='https://unpkg.com/leaflet/dist/leaflet.js'></script>
