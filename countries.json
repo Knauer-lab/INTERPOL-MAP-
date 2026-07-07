@@ -1,6 +1,99 @@
 {
-  "Germany":{"ncb":"Bundeskriminalamt - NCB Wiesbaden","redNotice":"Yes","diffusion":"Yes"},
-  "France":{"ncb":"NCB Paris","redNotice":"Yes","diffusion":"Yes"},
-  "Portugal":{"ncb":"NCB Lisbon","redNotice":"Yes","diffusion":"Yes"},
-  "Austria":{"ncb":"NCB Vienna","redNotice":"Yes","diffusion":"Yes"}
-}
+  "Germany": {
+    "ncb": "Bundeskriminalamt - NCB Wiesbaden",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "Own local system",
+    "warning": "Yes"
+  },
+  "France": {
+    "ncb": "NCB Paris",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7 + Own local system"
+  },
+  "Portugal": {
+    "ncb": "NCB Lisbon",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7"
+  },
+  "Austria": {
+    "ncb": "NCB Vienna",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7 + Own local system"
+  },
+  "Spain": {
+    "ncb": "NCB Madrid",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7"
+  },
+  "Italy": {
+    "ncb": "NCB Rome",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7"
+  },
+  "Netherlands": {
+    "ncb": "NCB The Hague",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "Own local system"
+  },
+  "Belgium": {
+    "ncb": "NCB Brussels",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7"
+  },
+  "Switzerland": {
+    "ncb": "NCB Bern",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7"
+  },
+  "Poland": {
+    "ncb": "NCB Poland",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7 + Own local system"
+  },
+  "United Kingdom": {
+    "ncb": "JICC Manchester",
+    "redNotice": "Limited",
+    "diffusion": "No",
+    "system": "Own local system"
+  },
+  "Greece": {
+    "ncb": "NCB Athens",
+    "redNotice": "Yes",
+    "diffusion": "No",
+    "system": "I24/7 + Own local system"
+  },
+  "Estonia": {
+    "ncb": "NCB Tallinn",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7"
+  },
+  "Lithuania": {
+    "ncb": "NCB Vilnius",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7"
+  },
+  "Croatia": {
+    "ncb": "NCB Zagreb",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7"
+  },
+  "Romania": {
+    "ncb": "NCB Bucharest",
+    "redNotice": "No",
+    "diffusion": "No",
+    "system": "I24/7 + Own local system"
+  },
+  "Serbia": {
