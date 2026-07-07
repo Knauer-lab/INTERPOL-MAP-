@@ -107,6 +107,66 @@
     "redNotice": "Yes",
     "diffusion": "Yes",
     "system": "I24/7"
+  },
+  ,
+  "Albania": {
+    "ncb": "NCB Tirana",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7 + Own local system",
+    "canExclude": "Yes",
+    "requestInfo": "Yes",
+    "warnWantedPerson": "No"
+  },
+
+  "Armenia": {
+    "ncb": "NCB Yerevan",
+    "address": "48 Z. Kanakertsi street, Yerevan",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "Own local system",
+    "canExclude": "No",
+    "requestInfo": "Yes",
+    "warnWantedPerson": "Yes"
+  },
+
+  "Czech Republic": {
+    "ncb": "NCB Prague",
+    "redNotice": "No",
+    "diffusion": "No",
+    "system": "I24/7 + Own local system",
+    "canExclude": "No",
+    "requestInfo": "Limited",
+    "warnWantedPerson": "No"
+  },
+
+  "Slovakia": {
+    "ncb": "NCB Bratislava",
+    "redNotice": "Yes",
+    "diffusion": "No",
+    "system": "I24/7 + Own local system",
+    "canExclude": "No",
+    "requestInfo": "No",
+    "warnWantedPerson": "No"
+  },
+
+  "Turkey": {
+    "ncb": "NCB Turkey",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7",
+    "requestInfo": "Yes",
+    "warnWantedPerson": "No"
+  },
+
+  "United States of America": {
+    "ncb": "INTERPOL Washington",
+    "redNotice": "No answer",
+    "diffusion": "No answer",
+    "system": "I24/7 + Own local system",
+    "canExclude": "Yes",
+    "requestInfo": "FOIA possible",
+    "warnWantedPerson": "Limited"
   }
 }
 
