@@ -38,6 +38,14 @@ const INFO_FIELDS = [
 ];
 
 // ============================================================================
+// GLOBAL STATE
+// ============================================================================
+
+let geoJSONLayer = null;
+let countryDataGlobal = {};
+let worldDataGlobal = {};
+
+// ============================================================================
 // HELPER FUNCTIONS
 // ============================================================================
 
@@ -68,6 +76,99 @@ const generateInfoHTML = (country, info) => {
   return `<h2>${country}</h2>${fieldsHTML}`;
 };
 
+/**
+ * Highlights a country on the map and displays its info
+ * @param {string} countryName - Name of the country to highlight
+ */
+const highlightCountry = (countryName) => {
+  const infoElement = document.getElementById('info');
+  
+  geoJSONLayer.eachLayer((layer) => {
+    const name = layer.feature.properties.name;
+    
+    if (name === countryName) {
+      // Highlight the selected country
+      layer.setStyle({
+        weight: 3,
+        color: '#000',
+        fillOpacity: 0.8
+      });
+      
+      // Display info
+      const info = countryDataGlobal[countryName];
+      infoElement.innerHTML = generateInfoHTML(countryName, info);
+      
+      // Zoom to the country
+      map.fitBounds(layer.getBounds());
+    } else {
+      // Reset other countries
+      const info = countryDataGlobal[name];
+      const fillColor = info ? getFillColor(info.redNotice) : RED_NOTICE_COLORS["Default"];
+      
+      layer.setStyle({
+        color: STYLE_CONFIG.borderColor,
+        weight: STYLE_CONFIG.borderWeight,
+        fillColor: fillColor,
+        fillOpacity: STYLE_CONFIG.fillOpacity
+      });
+    }
+  });
+};
+
+/**
+ * Resets all country styles to default
+ */
+const resetStyles = () => {
+  geoJSONLayer.eachLayer((layer) => {
+    const country = layer.feature.properties.name;
+    const info = countryDataGlobal[country];
+    const fillColor = info ? getFillColor(info.redNotice) : RED_NOTICE_COLORS["Default"];
+    
+    layer.setStyle({
+      color: STYLE_CONFIG.borderColor,
+      weight: STYLE_CONFIG.borderWeight,
+      fillColor: fillColor,
+      fillOpacity: STYLE_CONFIG.fillOpacity
+    });
+  });
+};
+
+// ============================================================================
+// SEARCH FUNCTIONALITY
+// ============================================================================
+
+const setupSearch = (countryData) => {
+  const searchInput = document.getElementById('search');
+  
+  if (!searchInput) return;
+  
+  // Get list of countries from data
+  const countries = Object.keys(countryData).sort();
+  
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase().trim();
+    
+    if (!query) {
+      resetStyles();
+      document.getElementById('info').innerHTML = '<p>Wählen Sie ein Land aus oder suchen Sie danach.</p>';
+      return;
+    }
+    
+    // Find matching countries
+    const matches = countries.filter(country => 
+      country.toLowerCase().includes(query)
+    );
+    
+    if (matches.length > 0) {
+      // Highlight the first match
+      highlightCountry(matches[0]);
+    } else {
+      resetStyles();
+      document.getElementById('info').innerHTML = '<p>Keine Länder gefunden.</p>';
+    }
+  });
+};
+
 // ============================================================================
 // MAIN APPLICATION
 // ============================================================================
@@ -78,8 +179,12 @@ Promise.all([
 ]).then(([countryData, worldData]) => {
 
   const infoElement = document.getElementById('info');
+  
+  // Store globally for search functionality
+  countryDataGlobal = countryData;
+  worldDataGlobal = worldData;
 
-  L.geoJSON(worldData, {
+  geoJSONLayer = L.geoJSON(worldData, {
 
     style: (feature) => {
       const info = countryData[feature.properties.name];
@@ -99,8 +204,31 @@ Promise.all([
         const info = countryData[country];
         infoElement.innerHTML = generateInfoHTML(country, info);
       });
+      
+      // Hover effect
+      layer.on('mouseover', () => {
+        layer.setStyle({
+          weight: 2,
+          color: '#666'
+        });
+      });
+      
+      layer.on('mouseout', () => {
+        const country = feature.properties.name;
+        const info = countryData[country];
+        const fillColor = info ? getFillColor(info.redNotice) : RED_NOTICE_COLORS["Default"];
+        
+        layer.setStyle({
+          color: STYLE_CONFIG.borderColor,
+          weight: STYLE_CONFIG.borderWeight,
+          fillColor: fillColor
+        });
+      });
     }
 
   }).addTo(map);
+  
+  // Initialize search functionality
+  setupSearch(countryData);
 
 });
