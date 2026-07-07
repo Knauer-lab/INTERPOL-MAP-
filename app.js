@@ -1,6 +1,4 @@
-layer.on("click", function() {
-    console.log(feature.properties);
-});
+const map = L.map('map').setView([20, 0], 2);
 
 L.tileLayer(
   'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
@@ -10,4 +8,4 @@ L.tileLayer(
 ).addTo(map);
 
 document.getElementById('info').innerHTML =
-  'Die Karte wurde erfolgreich geladen.';
+  '<h3>Test erfolgreich</h3><p>JavaScript funktioniert.</p>';
