@@ -21,6 +21,7 @@ const RED_NOTICE_COLORS = {
   "Yes": "#4CAF50",
   "No": "#F44336",
   "Unknown": "#FFC107",
+  "Limited": "#FF9800",
   "Default": "#cccccc"
 };
 
@@ -38,6 +39,31 @@ const INFO_FIELDS = [
 ];
 
 // ============================================================================
+// COUNTRY NAME MAPPING
+// ============================================================================
+// Maps GeoJSON names to countries.json keys
+
+const COUNTRY_NAME_MAP = {
+  "Germany": "Germany",
+  "France": "France",
+  "Portugal": "Portugal",
+  "Austria": "Austria",
+  "Spain": "Spain",
+  "Italy": "Italy",
+  "Netherlands": "Netherlands",
+  "Belgium": "Belgium",
+  "Switzerland": "Switzerland",
+  "Poland": "Poland",
+  "United Kingdom": "United Kingdom",
+  "Greece": "Greece",
+  "Estonia": "Estonia",
+  "Lithuania": "Lithuania",
+  "Croatia": "Croatia",
+  "Romania": "Romania",
+  "Serbia": "Serbia"
+};
+
+// ============================================================================
 // GLOBAL STATE
 // ============================================================================
 
@@ -50,8 +76,17 @@ let worldDataGlobal = {};
 // ============================================================================
 
 /**
+ * Get the mapped country name from GeoJSON feature name
+ * @param {string} geoJSONName - The name from GeoJSON properties
+ * @returns {string|null} - The mapped name from countries.json or null
+ */
+const getMappedCountryName = (geoJSONName) => {
+  return COUNTRY_NAME_MAP[geoJSONName] || null;
+};
+
+/**
  * Determines the fill color based on the Red Notice status
- * @param {string} redNoticeStatus - The status value (Yes/No/Unknown)
+ * @param {string} redNoticeStatus - The status value (Yes/No/Unknown/Limited)
  * @returns {string} - Hex color code
  */
 const getFillColor = (redNoticeStatus) => {
@@ -78,15 +113,18 @@ const generateInfoHTML = (country, info) => {
 
 /**
  * Highlights a country on the map and displays its info
- * @param {string} countryName - Name of the country to highlight
+ * @param {string} countryName - Name of the country to highlight (from countries.json)
  */
 const highlightCountry = (countryName) => {
   const infoElement = document.getElementById('info');
+  let found = false;
   
   geoJSONLayer.eachLayer((layer) => {
-    const name = layer.feature.properties.name;
+    const geoJSONName = layer.feature.properties.name;
+    const mappedName = getMappedCountryName(geoJSONName);
     
-    if (name === countryName) {
+    if (mappedName === countryName) {
+      found = true;
       // Highlight the selected country
       layer.setStyle({
         weight: 3,
@@ -102,7 +140,7 @@ const highlightCountry = (countryName) => {
       map.fitBounds(layer.getBounds());
     } else {
       // Reset other countries
-      const info = countryDataGlobal[name];
+      const info = countryDataGlobal[mappedName];
       const fillColor = info ? getFillColor(info.redNotice) : RED_NOTICE_COLORS["Default"];
       
       layer.setStyle({
@@ -113,6 +151,10 @@ const highlightCountry = (countryName) => {
       });
     }
   });
+  
+  if (!found) {
+    infoElement.innerHTML = `<p>Keine Daten für ${countryName} vorhanden.</p>`;
+  }
 };
 
 /**
@@ -120,8 +162,9 @@ const highlightCountry = (countryName) => {
  */
 const resetStyles = () => {
   geoJSONLayer.eachLayer((layer) => {
-    const country = layer.feature.properties.name;
-    const info = countryDataGlobal[country];
+    const geoJSONName = layer.feature.properties.name;
+    const mappedName = getMappedCountryName(geoJSONName);
+    const info = countryDataGlobal[mappedName];
     const fillColor = info ? getFillColor(info.redNotice) : RED_NOTICE_COLORS["Default"];
     
     layer.setStyle({
@@ -187,7 +230,9 @@ Promise.all([
   geoJSONLayer = L.geoJSON(worldData, {
 
     style: (feature) => {
-      const info = countryData[feature.properties.name];
+      const geoJSONName = feature.properties.name;
+      const mappedName = getMappedCountryName(geoJSONName);
+      const info = mappedName ? countryData[mappedName] : null;
       const fillColor = info ? getFillColor(info.redNotice) : RED_NOTICE_COLORS["Default"];
 
       return {
@@ -200,9 +245,15 @@ Promise.all([
 
     onEachFeature: (feature, layer) => {
       layer.on('click', () => {
-        const country = feature.properties.name;
-        const info = countryData[country];
-        infoElement.innerHTML = generateInfoHTML(country, info);
+        const geoJSONName = feature.properties.name;
+        const mappedName = getMappedCountryName(geoJSONName);
+        
+        if (mappedName) {
+          const info = countryData[mappedName];
+          infoElement.innerHTML = generateInfoHTML(mappedName, info);
+        } else {
+          infoElement.innerHTML = `<h3>${geoJSONName}</h3><p>Keine Daten vorhanden.</p>`;
+        }
       });
       
       // Hover effect
@@ -214,8 +265,9 @@ Promise.all([
       });
       
       layer.on('mouseout', () => {
-        const country = feature.properties.name;
-        const info = countryData[country];
+        const geoJSONName = feature.properties.name;
+        const mappedName = getMappedCountryName(geoJSONName);
+        const info = mappedName ? countryData[mappedName] : null;
         const fillColor = info ? getFillColor(info.redNotice) : RED_NOTICE_COLORS["Default"];
         
         layer.setStyle({
