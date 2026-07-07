@@ -14,12 +14,32 @@ Promise.all([
 
   L.geoJSON(worldData, {
 
-    style: {
-      color: '#333',
-      weight: 1,
-      fillColor: '#4a90e2',
-      fillOpacity: 0.5
-    },
+style: function(feature) {
+
+  const info =
+    countryData[feature.properties.name];
+
+  let color = "#cccccc";
+
+  if(info){
+
+    if(info.redNotice === "Yes")
+      color = "#4CAF50";
+
+    else if(info.redNotice === "No")
+      color = "#F44336";
+
+    else
+      color = "#FFC107";
+  }
+
+  return {
+    color: "#333",
+    weight: 1,
+    fillColor: color,
+    fillOpacity: 0.6
+  };
+},
 
     onEachFeature: function(feature, layer) {
 
