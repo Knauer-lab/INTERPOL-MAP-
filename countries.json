@@ -10,8 +10,7 @@
     "canExclude": "Yes",
     "requestInfo": "Yes",
     "warnWantedPerson": "Yes"
-  }
-},
+  },
   "France": {
     "ncb": "NCB Paris",
     "redNotice": "Yes",
