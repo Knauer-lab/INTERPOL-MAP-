@@ -96,4 +96,12 @@
     "diffusion": "No",
     "system": "I24/7 + Own local system"
   },
+
   "Serbia": {
+    "ncb": "NCB Belgrade",
+    "redNotice": "Yes",
+    "diffusion": "Yes",
+    "system": "I24/7"
+  }
+}
+
